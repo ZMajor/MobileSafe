@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:major="http://schemas.android.com/apk/res/com.major.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/TitleStyle"
+        android:text="设置中心" />
+
+   <com.major.mobilesafe.view.SettingItemView
+       android:id="@+id/siv_update"
+       android:layout_width="match_parent"
+	   android:layout_height="wrap_content"
+	   major:title1="自动更新设置"
+	   major:desc_on="自动更新已开启"
+	   major:desc_off="自动更新已关闭"/>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">手机卫士</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings </string>
+    <string name="title_activity_main">功能列表</string>
+    <string name="marquee_content">有了手机卫士, 腰不酸了,腿不疼了,走路也有劲了, 手机卫士太NB了...................................有了手机卫士, 腰不酸了,腿不疼了,走路也有劲了, 手机卫士太NB了.............................................</string>
+
+</resources>
