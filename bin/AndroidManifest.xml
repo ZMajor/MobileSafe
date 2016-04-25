@@ -26,6 +26,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 模拟器获取经纬度权限 -->
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 监听去电的广播接收者权限 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     
     <application
         android:allowBackup="true"
@@ -49,6 +52,9 @@
         <activity android:name=".activity.Setup3Activity"/>
         <activity android:name=".activity.Setup4Activity"/>
         <activity android:name=".activity.ContactActivity"/>
+        <activity android:name=".activity.AToolsActivity"/>
+        <activity android:name=".activity.AddressActivity"/>
+        <activity android:name=".activity.DragViewActivity"/>
         
         <receiver android:name=".receiver.BootCompleteReceiver">
             <intent-filter >
@@ -62,7 +68,15 @@
             </intent-filter>
         </receiver>
         
+        <!-- <receiver android:name=".receiver.OutCallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+        </receiver> -->
+        
         <service android:name=".service.LocationService" >
+        </service>
+         <service android:name=".service.AddressService" >
         </service>
     </application>
 		

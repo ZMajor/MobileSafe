@@ -61,6 +61,11 @@ public class MainActivity extends ActionBarActivity {
 					// 手机防盗
 					showPasswordDialog();
 					break;
+				case 7:
+					// 设置中心
+					startActivity(new Intent(MainActivity.this,
+							AToolsActivity.class));
+					break;	
 				case 8:
 					// 设置中心
 					startActivity(new Intent(MainActivity.this,
