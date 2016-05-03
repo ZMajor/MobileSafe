@@ -57,6 +57,7 @@
         <activity android:name=".activity.AToolsActivity"/>
         <activity android:name=".activity.AddressActivity"/>
         <activity android:name=".activity.DragViewActivity"/>
+        <activity android:name=".activity.CallSmsSafeActivity"/>
         
         <receiver android:name=".receiver.BootCompleteReceiver">
             <intent-filter >
