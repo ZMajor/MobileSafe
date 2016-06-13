@@ -17,7 +17,7 @@ import com.major.mobilesafe.view.SettingClickView;
 import com.major.mobilesafe.view.SettingItemView;
 
 /**
- * ÉèÖÃÖĞĞÄ
+ * è®¾ç½®ä¸­å¿ƒ
  * 
  * @author Administrator
  * 
@@ -43,19 +43,19 @@ public class SettingActivity extends Activity {
 	}
 
 	/**
-	 * ³õÊ¼×Ô¶¯¸üĞÂ¿ª¹Ø
+	 * åˆå§‹è‡ªåŠ¨æ›´æ–°å¼€å…³
 	 */
 	private void initUpdateView() {
 		sivUpdate = (SettingItemView) findViewById(R.id.siv_update);
-		// sivUpdate.setTitle("×Ô¶¯¸üĞÂÉèÖÃ");
+		// sivUpdate.setTitle("è‡ªåŠ¨æ›´æ–°è®¾ç½®");
 
 		boolean autoUpdate = mPref.getBoolean("auto_update", true);
 
 		if (autoUpdate) {
-			// sivUpdate.setdesc("×Ô¶¯¸üĞÂÒÑ¿ªÆô");
+			// sivUpdate.setdesc("è‡ªåŠ¨æ›´æ–°å·²å¼€å¯");
 			sivUpdate.setChecked(true);
 		} else {
-			// sivUpdate.setdesc("×Ô¶¯¸üĞÂÒÑ¹Ø±Õ");
+			// sivUpdate.setdesc("è‡ªåŠ¨æ›´æ–°å·²å…³é—­");
 			sivUpdate.setChecked(false);
 		}
 
@@ -65,13 +65,13 @@ public class SettingActivity extends Activity {
 			public void onClick(View arg0) {
 				if (sivUpdate.isCheckcd()) {
 					sivUpdate.setChecked(false);
-					// sivUpdate.setdesc("×Ô¶¯¸üĞÂÒÑ¹Ø±Õ");
-					// ¸üĞÂSharedPreferences
+					// sivUpdate.setdesc("è‡ªåŠ¨æ›´æ–°å·²å…³é—­");
+					// æ›´æ–°SharedPreferences
 					mPref.edit().putBoolean("auto_update", false).commit();
 				} else {
 					sivUpdate.setChecked(true);
-					// sivUpdate.setdesc("×Ô¶¯¸üĞÂÒÑ¿ªÆô");
-					// ¸üĞÂSharedPreferences
+					// sivUpdate.setdesc("è‡ªåŠ¨æ›´æ–°å·²å¼€å¯");
+					// æ›´æ–°SharedPreferences
 					mPref.edit().putBoolean("auto_update", true).commit();
 				}
 			}
@@ -79,7 +79,7 @@ public class SettingActivity extends Activity {
 	}
 
 	/**
-	 * ³õÊ¼»°¹éÊôµØ¿ª¹Ø
+	 * åˆå§‹è¯å½’å±åœ°å¼€å…³
 	 */
 	private void initAddressView() {
 
@@ -100,26 +100,26 @@ public class SettingActivity extends Activity {
 				if (sivAddress.isCheckcd()) {
 					sivAddress.setChecked(false);
 					stopService(new Intent(SettingActivity.this,
-							AddressService.class));// Í£Ö¹¹éÊôµØ·şÎñ
+							AddressService.class));// åœæ­¢å½’å±åœ°æœåŠ¡
 				} else {
 					sivAddress.setChecked(true);
 					startService(new Intent(SettingActivity.this,
-							AddressService.class));// ¿ªÊ¼¹éÊôµØ·şÎñ
+							AddressService.class));// å¼€å§‹å½’å±åœ°æœåŠ¡
 				}
 			}
 		});
 	}
 
-	final String[] items = new String[] { "°ëÍ¸Ã÷", "»îÁ¦³È", "ÎÀÊ¿À¶", "½ğÊô»Ò", "Æ»¹ûÂÌ" };
+	final String[] items = new String[] { "åŠé€æ˜", "æ´»åŠ›æ©™", "å«å£«è“", "é‡‘å±ç°", "è‹¹æœç»¿" };
 
 	/**
-	 * ĞŞ¸ÄÌáÊ¾¿òÏÔÊ¾·ç¸ñ
+	 * ä¿®æ”¹æç¤ºæ¡†æ˜¾ç¤ºé£æ ¼
 	 */
 	private void initAddressStyle() {
 		scvAddressStyle = (SettingClickView) findViewById(R.id.scv_address_style);
-		scvAddressStyle.setTitle("¹éÊôµØÌáÊ¾¿ò·ç¸ñ");
+		scvAddressStyle.setTitle("å½’å±åœ°æç¤ºæ¡†é£æ ¼");
 		
-		int style = mPref.getInt("address_style", 0);// ¶ÁÈ¡±£´æµÄstyle
+		int style = mPref.getInt("address_style", 0);// è¯»å–ä¿å­˜çš„style
 		scvAddressStyle.setdesc(items[style]);
 
 		scvAddressStyle.setOnClickListener(new OnClickListener() {
@@ -132,38 +132,38 @@ public class SettingActivity extends Activity {
 	}
 
 	/**
-	 * µ¯³öÑ¡Ôñ·ç¸ñµÄµ¥Ñ¡¿ò
+	 * å¼¹å‡ºé€‰æ‹©é£æ ¼çš„å•é€‰æ¡†
 	 */
 	protected void showSingleChooseDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// builder.setIcon(R.drawable.ic_launcher);
-		builder.setTitle("¹éÊôµØÌáÊ¾¿ò·ç¸ñ");
+		builder.setTitle("å½’å±åœ°æç¤ºæ¡†é£æ ¼");
 		
-		int style = mPref.getInt("address_style", 0);// ¶ÁÈ¡±£´æµÄstyle
+		int style = mPref.getInt("address_style", 0);// è¯»å–ä¿å­˜çš„style
 		
 		builder.setSingleChoiceItems(items, style, new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				mPref.edit().putInt("address_style", which).commit();// ±£´æÑ¡ÔñµÄ·ç¸ñ
-				dialog.dismiss(); // ÈÃdialogÏûÊ§
+				mPref.edit().putInt("address_style", which).commit();// ä¿å­˜é€‰æ‹©çš„é£æ ¼
+				dialog.dismiss(); // è®©dialogæ¶ˆå¤±
 				
-				scvAddressStyle.setdesc(items[which]);// ¸üĞÂ×éºÏ¿Ø¼şµÄÃèÊöĞÅÏ¢
+				scvAddressStyle.setdesc(items[which]);// æ›´æ–°ç»„åˆæ§ä»¶çš„æè¿°ä¿¡æ¯
 			}
 		});
 		
-		builder.setNegativeButton("È¡Ïû", null);
+		builder.setNegativeButton("å–æ¶ˆ", null);
 		builder.show();
 	}
 	
 	/**
-	 * ĞŞ¸Ä¹éÊôµØÏÔÊ¾Î»ÖÃ
+	 * ä¿®æ”¹å½’å±åœ°æ˜¾ç¤ºä½ç½®
 	 */
 	private void initAddressLocation() {
 		
 		scvAddressLocation = (SettingClickView) findViewById(R.id.scv_address_location);
-		scvAddressLocation.setTitle("¹éÊôµØÌáÊ¾¿òÏÔÊ¾Î»ÖÃ");
-		scvAddressLocation.setdesc("ÉèÖÃ¹éÊôµØÌáÊ¾¿òµÄÏÔÊ¾Î»ÖÃ");
+		scvAddressLocation.setTitle("å½’å±åœ°æç¤ºæ¡†æ˜¾ç¤ºä½ç½®");
+		scvAddressLocation.setdesc("è®¾ç½®å½’å±åœ°æç¤ºæ¡†çš„æ˜¾ç¤ºä½ç½®");
 		
 		scvAddressLocation.setOnClickListener(new OnClickListener() {
 			

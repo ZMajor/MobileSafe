@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.major.mobilesafe.R;
 
 /**
- * ĞŞ¸Ä¹éÊôµØÎ»ÖÃ
+ * ä¿®æ”¹å½’å±åœ°ä½ç½®
  * @author Administrator
  *
  */
@@ -32,7 +32,7 @@ public class DragViewActivity extends Activity {
 	private int startY;
 	private SharedPreferences mPref;
 	
-	long[] mHits = new long[2];// Êı×é³¤¶È±íÊ¾Òªµã»÷µÄ´ÎÊı
+	long[] mHits = new long[2];// æ•°ç»„é•¿åº¦è¡¨ç¤ºè¦ç‚¹å‡»çš„æ¬¡æ•°
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +48,17 @@ public class DragViewActivity extends Activity {
 		int lastX = mPref.getInt("lastX", 0);
 		int lastY = mPref.getInt("lastY", 0);
 		
-		// onMeasure(²âÁ¿view), onLayout(°²·ÅÎ»ÖÃ), onDraw(»æÖÆ)
+		// onMeasure(æµ‹é‡view), onLayout(å®‰æ”¾ä½ç½®), onDraw(ç»˜åˆ¶)
 		// ivDrag.layout(lastX, lastY, lastX + ivDrag.getWidth(),
 		// lastY + ivDrag.getHeight());
-		//²»ÄÜÓÃÕâ¸ö·½·¨,ÒòÎª»¹Ã»ÓĞ²âÁ¿Íê³É,¾Í²»ÄÜ°²·ÅÎ»ÖÃ
+		//ä¸èƒ½ç”¨è¿™ä¸ªæ–¹æ³•,å› ä¸ºè¿˜æ²¡æœ‰æµ‹é‡å®Œæˆ,å°±ä¸èƒ½å®‰æ”¾ä½ç½®
 		
-		// »ñÈ¡ÆÁÄ»¿í¸ß
+		// è·å–å±å¹•å®½é«˜
 		final int winWidth = getWindowManager().getDefaultDisplay().getWidth();
 		final int winHeight = getWindowManager().getDefaultDisplay()
 				.getHeight();
 		
-		if (lastY > winHeight / 2) {// ÉÏ±ßÏÔÊ¾,ÏÂ±ßÒş²Ø
+		if (lastY > winHeight / 2) {// ä¸Šè¾¹æ˜¾ç¤º,ä¸‹è¾¹éšè—
 			tvTop.setVisibility(View.VISIBLE);
 			tvBottom.setVisibility(View.INVISIBLE);
 		} else {
@@ -67,25 +67,25 @@ public class DragViewActivity extends Activity {
 		}
 		
 		RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) ivDrag
-				.getLayoutParams();// »ñÈ¡²¼¾Ö¶ÔÏó
-		layoutParams.leftMargin = lastX;// ÉèÖÃ×ó±ß¾à
-		layoutParams.topMargin = lastY;// ÉèÖÃtop±ß¾à
+				.getLayoutParams();// è·å–å¸ƒå±€å¯¹è±¡
+		layoutParams.leftMargin = lastX;// è®¾ç½®å·¦è¾¹è·
+		layoutParams.topMargin = lastY;// è®¾ç½®topè¾¹è·
 
-		ivDrag.setLayoutParams(layoutParams);// ÖØĞÂÉèÖÃÎ»ÖÃ
+		ivDrag.setLayoutParams(layoutParams);// é‡æ–°è®¾ç½®ä½ç½®
 		
 		ivDrag.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
-				mHits[mHits.length - 1] = SystemClock.uptimeMillis();// ¿ª»úºó¿ªÊ¼¼ÆËãµÄÊ±¼ä
+				mHits[mHits.length - 1] = SystemClock.uptimeMillis();// å¼€æœºåå¼€å§‹è®¡ç®—çš„æ—¶é—´
 				if (mHits[0] >= (SystemClock.uptimeMillis() - 500)) {
-					// °ÑÍ¼Æ¬¾ÓÖĞ
+					// æŠŠå›¾ç‰‡å±…ä¸­
 					ivDrag.layout(winWidth / 2 - ivDrag.getWidth() / 2,
 							ivDrag.getTop(), winWidth / 2 + ivDrag.getWidth()
 									/ 2, ivDrag.getBottom());
 					
-					// ¼ÇÂ¼×ø±êµã
+					// è®°å½•åæ ‡ç‚¹
 					Editor edit = mPref.edit();
 					edit.putInt("lastX", winWidth / 2 - ivDrag.getWidth() / 2);
 					edit.putInt("lastY", ivDrag.getTop());
@@ -108,24 +108,24 @@ public class DragViewActivity extends Activity {
 					int endX = (int) event.getRawX();
 					int endY = (int) event.getRawY();
 					
-					// ¼ÆËãÒÆ¶¯Æ«ÒÆÁ¿
+					// è®¡ç®—ç§»åŠ¨åç§»é‡
 					int dx = endX - startX;
 					int dy = endY - startY;
 					
-					// ¸üĞÂ×óÉÏÓÒÏÂ¾àÀë
+					// æ›´æ–°å·¦ä¸Šå³ä¸‹è·ç¦»
 					int l = ivDrag.getLeft() + dx;
 					int r = ivDrag.getRight() + dx;
 
 					int t = ivDrag.getTop() + dy;
 					int b = ivDrag.getBottom() + dy;
 					
-					// ÅĞ¶ÏÊÇ·ñ³¬³öÆÁÄ»±ß½ç, ×¢Òâ×´Ì¬À¸µÄ¸ß¶È
+					// åˆ¤æ–­æ˜¯å¦è¶…å‡ºå±å¹•è¾¹ç•Œ, æ³¨æ„çŠ¶æ€æ çš„é«˜åº¦
 					if (l < 0 || r > winWidth || t < 0 || b > winHeight - 20) {
 						break;
 					}
 
-					// ¸ù¾İÍ¼Æ¬Î»ÖÃ,¾ö¶¨ÌáÊ¾¿òÏÔÊ¾ºÍÒş²Ø
-					if (t > winHeight / 2) {// ÉÏ±ßÏÔÊ¾,ÏÂ±ßÒş²Ø
+					// æ ¹æ®å›¾ç‰‡ä½ç½®,å†³å®šæç¤ºæ¡†æ˜¾ç¤ºå’Œéšè—
+					if (t > winHeight / 2) {// ä¸Šè¾¹æ˜¾ç¤º,ä¸‹è¾¹éšè—
 						tvTop.setVisibility(View.VISIBLE);
 						tvBottom.setVisibility(View.INVISIBLE);
 					} else {
@@ -133,16 +133,16 @@ public class DragViewActivity extends Activity {
 						tvBottom.setVisibility(View.VISIBLE);
 					}
 					
-					// ¸üĞÂ½çÃæ
+					// æ›´æ–°ç•Œé¢
 					ivDrag.layout(l, t, r, b);
 					
-					// ÖØĞÂ³õÊ¼»¯Æğµã×ø±ê
+					// é‡æ–°åˆå§‹åŒ–èµ·ç‚¹åæ ‡
 					startX = (int) event.getRawX();
 					startY = (int) event.getRawY();
 					
 					break;
 				case MotionEvent.ACTION_UP:
-					// ¼ÇÂ¼×ø±êµã
+					// è®°å½•åæ ‡ç‚¹
 					Editor edit = mPref.edit();
 					edit.putInt("lastX", ivDrag.getLeft());
 					edit.putInt("lastY", ivDrag.getTop());
@@ -152,7 +152,7 @@ public class DragViewActivity extends Activity {
 					break;
 				}
 				
-				return false;//ÊÂ¼şÒªÏòÏÂ´«µİ,ÈÃonclick(Ë«»÷ÊÂ¼ş)¿ÉÒÔÏìÓ¦
+				return false;//äº‹ä»¶è¦å‘ä¸‹ä¼ é€’,è®©onclick(åŒå‡»äº‹ä»¶)å¯ä»¥å“åº”
 			}
 		});
 		

@@ -9,7 +9,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.major.mobilesafe.R;
 
 /**
- * µÚ4¸öÉèÖÃÏòµ¼Ò³
+ * ç¬¬4ä¸ªè®¾ç½®å‘å¯¼é¡µ
  * 
  * @author Administrator
  * 
@@ -27,26 +27,26 @@ public class Setup4Activity extends BaseSetupActivity {
 		
 		boolean protect = mPref.getBoolean("protect", false);
 
-		// ¸ù¾İsp±£´æµÄ×´Ì¬,¸üĞÂcheckbox
+		// æ ¹æ®spä¿å­˜çš„çŠ¶æ€,æ›´æ–°checkbox
 		if (protect) {
-			cbProtect.setText("·ÀµÁ±£»¤ÒÑ¾­¿ªÆô");
+			cbProtect.setText("é˜²ç›—ä¿æŠ¤å·²ç»å¼€å¯");
 			cbProtect.setChecked(true);
 		} else {
-			cbProtect.setText("·ÀµÁ±£»¤Ã»ÓĞ¿ªÆô");
+			cbProtect.setText("é˜²ç›—ä¿æŠ¤æ²¡æœ‰å¼€å¯");
 			cbProtect.setChecked(false);
 		}
 		
-		// µ±checkbox·¢Éú±ä»¯Ê±,»Øµ÷´Ë·½·¨
+		// å½“checkboxå‘ç”Ÿå˜åŒ–æ—¶,å›è°ƒæ­¤æ–¹æ³•
 		cbProtect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
 				if (isChecked) {
-					cbProtect.setText("·ÀµÁ±£»¤ÒÑ¾­¿ªÆô");
+					cbProtect.setText("é˜²ç›—ä¿æŠ¤å·²ç»å¼€å¯");
 					mPref.edit().putBoolean("protect", true).commit();
 				} else {
-					cbProtect.setText("·ÀµÁ±£»¤Ã»ÓĞ¿ªÆô");
+					cbProtect.setText("é˜²ç›—ä¿æŠ¤æ²¡æœ‰å¼€å¯");
 					mPref.edit().putBoolean("protect", false).commit();
 				}
 			}
@@ -60,8 +60,8 @@ public class Setup4Activity extends BaseSetupActivity {
 		finish();
 		mPref.edit().putBoolean("configed", true).commit();
 
-		// Á½¸ö½çÃæÇĞ»»¶¯»­
-		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// ½øÈë¶¯»­
+		// ä¸¤ä¸ªç•Œé¢åˆ‡æ¢åŠ¨ç”»
+		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// è¿›å…¥åŠ¨ç”»
 
 	}
 
@@ -70,9 +70,9 @@ public class Setup4Activity extends BaseSetupActivity {
 		startActivity(new Intent(this, Setup3Activity.class));
 		finish();
 
-		// Á½¸ö½çÃæÇĞ»»¶¯»­
+		// ä¸¤ä¸ªç•Œé¢åˆ‡æ¢åŠ¨ç”»
 		overridePendingTransition(R.anim.tran_previous_in,
-				R.anim.tran_previous_out);// ÍË³ö¶¯»­
+				R.anim.tran_previous_out);// é€€å‡ºåŠ¨ç”»
 
 	}
 

@@ -38,10 +38,10 @@ public class ContactActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				String phone = readContact.get(position).get("phone");// ¶ÁÈ¡µ±Ç°itemµÄµç»°ºÅÂë
+				String phone = readContact.get(position).get("phone");// è¯»å–å½“å‰itemçš„ç”µè¯å·ç 
 				Intent intent = new Intent();
 				intent.putExtra("phone", phone);
-				setResult(Activity.RESULT_OK, intent);// ½«Êı¾İ·ÅÔÚintentÖĞ·µ»Ø¸øÉÏÒ»¸öÒ³Ãæ
+				setResult(Activity.RESULT_OK, intent);// å°†æ•°æ®æ”¾åœ¨intentä¸­è¿”å›ç»™ä¸Šä¸€ä¸ªé¡µé¢
 
 				finish();
 			}
@@ -50,23 +50,23 @@ public class ContactActivity extends Activity {
 
 	private ArrayList<HashMap<String, String>> readContact() {
 
-		// Ê×ÏÈ,´Óraw_contactsÖĞ¶ÁÈ¡ÁªÏµÈËµÄid("contact_id")
-		// Æä´Î, ¸ù¾İcontact_id´Ódata±íÖĞ²éÑ¯³öÏàÓ¦µÄµç»°ºÅÂëºÍÁªÏµÈËÃû³Æ
-		// È»ºó,¸ù¾İmimetypeÀ´Çø·ÖÄÄ¸öÊÇÁªÏµÈË,ÄÄ¸öÊÇµç»°ºÅÂë
+		// é¦–å…ˆ,ä»raw_contactsä¸­è¯»å–è”ç³»äººçš„id("contact_id")
+		// å…¶æ¬¡, æ ¹æ®contact_idä»dataè¡¨ä¸­æŸ¥è¯¢å‡ºç›¸åº”çš„ç”µè¯å·ç å’Œè”ç³»äººåç§°
+		// ç„¶å,æ ¹æ®mimetypeæ¥åŒºåˆ†å“ªä¸ªæ˜¯è”ç³»äºº,å“ªä¸ªæ˜¯ç”µè¯å·ç 
 		Uri rawContactsUri = Uri
 				.parse("content://com.android.contacts/raw_contacts");
 		Uri dataUri = Uri.parse("content://com.android.contacts/data");
 
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
-		// ´Óraw_contactsÖĞ¶ÁÈ¡ÁªÏµÈËµÄid("contact_id")
+		// ä»raw_contactsä¸­è¯»å–è”ç³»äººçš„id("contact_id")
 		Cursor rawContactsCursor = getContentResolver().query(rawContactsUri,
 				new String[] { "contact_id" }, null, null, null);
 		if (rawContactsCursor != null) {
 			while (rawContactsCursor.moveToNext()) {
 				String contactId = rawContactsCursor.getString(0);
 
-				// ¸ù¾İcontact_id´Ódata±íÖĞ²éÑ¯³öÏàÓ¦µÄµç»°ºÅÂëºÍÁªÏµÈËÃû³Æ, Êµ¼ÊÉÏ²éÑ¯µÄÊÇÊÓÍ¼view_data
+				// æ ¹æ®contact_idä»dataè¡¨ä¸­æŸ¥è¯¢å‡ºç›¸åº”çš„ç”µè¯å·ç å’Œè”ç³»äººåç§°, å®é™…ä¸ŠæŸ¥è¯¢çš„æ˜¯è§†å›¾view_data
 				Cursor dataCursor = getContentResolver().query(dataUri,
 						new String[] { "data1", "mimetype" }, "contact_id=?",
 						new String[] { contactId }, null);

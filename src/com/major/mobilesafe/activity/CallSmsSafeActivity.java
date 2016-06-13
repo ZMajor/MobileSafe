@@ -17,7 +17,7 @@ public class CallSmsSafeActivity extends Activity {
 		initUI();
 	}
 	
-	// ¼ÓÔØÁĞ±í
+	// åŠ è½½åˆ—è¡¨
 	private void initUI() {
 		list_view = (ListView) findViewById(R.layout.list_view);
 	}

@@ -27,8 +27,8 @@ public class MainActivity extends ActionBarActivity {
 
 	private GridView gvMain;
 
-	private String[] mItems = new String[] { "ÊÖ»ú·ÀµÁ", "Í¨Ñ¶ÎÀÊ¿", "Èí¼ş¹ÜÀí", "½ø³Ì¹ÜÀí",
-			"Á÷Á¿Í³¼Æ", "ÊÖ»úÉ±¶¾", "»º´æÇåÀí", "¸ß¼¶¹¤¾ß", "ÉèÖÃÖĞĞÄ" };
+	private String[] mItems = new String[] { "æ‰‹æœºé˜²ç›—", "é€šè®¯å«å£«", "è½¯ä»¶ç®¡ç†", "è¿›ç¨‹ç®¡ç†",
+			"æµé‡ç»Ÿè®¡", "æ‰‹æœºæ€æ¯’", "ç¼“å­˜æ¸…ç†", "é«˜çº§å·¥å…·", "è®¾ç½®ä¸­å¿ƒ" };
 
 	private int[] mPics = new int[] { R.drawable.home_safe,
 			R.drawable.home_callmsgsafe, R.drawable.home_apps,
@@ -43,14 +43,14 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// »ñÈ¡»º´æ¶ÔÏó
+		// è·å–ç¼“å­˜å¯¹è±¡
 		mPref = getSharedPreferences("config", MODE_PRIVATE);
 
 		gvMain = (GridView) findViewById(R.id.gv_main);
-		// ¸øGridViewÉèÖÃÊı¾İ¶ÔÏó
+		// ç»™GridViewè®¾ç½®æ•°æ®å¯¹è±¡
 		gvMain.setAdapter(new MainAdapter());
 
-		// ÉèÖÃ¼àÌı
+		// è®¾ç½®ç›‘å¬
 		gvMain.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -58,21 +58,21 @@ public class MainActivity extends ActionBarActivity {
 					long arg3) {
 				switch (arg2) {
 				case 0:
-					// ÊÖ»ú·ÀµÁ
+					// æ‰‹æœºé˜²ç›—
 					showPasswordDialog();
 					break;
 				case 1:
-					// Í¨Ñ¶ÎÀÊ¿
+					// é€šè®¯å«å£«
 					startActivity(new Intent(MainActivity.this,
 							CallSmsSafeActivity.class));
 					break;	
 				case 7:
-					// ÉèÖÃÖĞĞÄ
+					// è®¾ç½®ä¸­å¿ƒ
 					startActivity(new Intent(MainActivity.this,
 							AToolsActivity.class));
 					break;	
 				case 8:
-					// ÉèÖÃÖĞĞÄ
+					// è®¾ç½®ä¸­å¿ƒ
 					startActivity(new Intent(MainActivity.this,
 							SettingActivity.class));
 					break;
@@ -86,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * ÏÔÊ¾ÃÜÂëµ¯´°
+	 * æ˜¾ç¤ºå¯†ç å¼¹çª—
 	 */
 	protected void showPasswordDialog() {
 
@@ -100,16 +100,16 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * ÊäÈëÃÜÂëµ¯´°
+	 * è¾“å…¥å¯†ç å¼¹çª—
 	 */
 	private void showPasswordInputDialog() {
-		// ´´½¨Dialog¶ÔÏó
+		// åˆ›å»ºDialogå¯¹è±¡
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		final AlertDialog dialog = builder.create();
 
 		View view = View.inflate(this, R.layout.dailog_input_password, null);
-		// dialog.setView(view);// ½«×Ô¶¨ÒåµÄ²¼¾ÖÎÄ¼şÉèÖÃ¸ødialog
-		dialog.setView(view, 0, 0, 0, 0);// ÉèÖÃ±ß¾àÎª0,±£Ö¤ÔÚ2.xµÄ°æ±¾ÉÏÔËĞĞÃ»ÎÊÌâ
+		// dialog.setView(view);// å°†è‡ªå®šä¹‰çš„å¸ƒå±€æ–‡ä»¶è®¾ç½®ç»™dialog
+		dialog.setView(view, 0, 0, 0, 0);// è®¾ç½®è¾¹è·ä¸º0,ä¿è¯åœ¨2.xçš„ç‰ˆæœ¬ä¸Šè¿è¡Œæ²¡é—®é¢˜
 
 		final EditText etPassword = (EditText) view
 				.findViewById(R.id.et_password);
@@ -126,16 +126,16 @@ public class MainActivity extends ActionBarActivity {
 					String savedPassword = mPref.getString("password", null);
 
 					if ((MD5Utils.encode(password)).equals(savedPassword)) {
-						Toast.makeText(MainActivity.this, "µÇÂ¼³É¹¦£¡",
+						Toast.makeText(MainActivity.this, "ç™»å½•æˆåŠŸï¼",
 								Toast.LENGTH_SHORT).show();
 						startActivity(new Intent(MainActivity.this,LostFindActivity.class));
 						dialog.dismiss();
 					} else {
-						Toast.makeText(MainActivity.this, "ÃÜÂë´íÎó£¡",
+						Toast.makeText(MainActivity.this, "å¯†ç é”™è¯¯ï¼",
 								Toast.LENGTH_SHORT).show();
 					}
 				} else {
-					Toast.makeText(MainActivity.this, "ÃÜÂë²»Îª¿Õ£¡",
+					Toast.makeText(MainActivity.this, "å¯†ç ä¸ä¸ºç©ºï¼",
 							Toast.LENGTH_SHORT).show();
 				}
 			}
@@ -153,17 +153,17 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * ÉèÖÃÃÜÂëµÄµ¯´°
+	 * è®¾ç½®å¯†ç çš„å¼¹çª—
 	 */
 	private void showPsswordSetDialog() {
 
-		// ´´½¨Dialog¶ÔÏó
+		// åˆ›å»ºDialogå¯¹è±¡
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		final AlertDialog dialog = builder.create();
 
 		View view = View.inflate(this, R.layout.dailog_set_password, null);
-		// dialog.setView(view);// ½«×Ô¶¨ÒåµÄ²¼¾ÖÎÄ¼şÉèÖÃ¸ødialog
-		dialog.setView(view, 0, 0, 0, 0);// ÉèÖÃ±ß¾àÎª0,±£Ö¤ÔÚ2.xµÄ°æ±¾ÉÏÔËĞĞÃ»ÎÊÌâ
+		// dialog.setView(view);// å°†è‡ªå®šä¹‰çš„å¸ƒå±€æ–‡ä»¶è®¾ç½®ç»™dialog
+		dialog.setView(view, 0, 0, 0, 0);// è®¾ç½®è¾¹è·ä¸º0,ä¿è¯åœ¨2.xçš„ç‰ˆæœ¬ä¸Šè¿è¡Œæ²¡é—®é¢˜
 
 		final EditText etPassword = (EditText) view
 				.findViewById(R.id.et_password);
@@ -181,17 +181,17 @@ public class MainActivity extends ActionBarActivity {
 				String passwordConfirm = etPasswordConfirm.getText().toString();
 				if (!TextUtils.isEmpty(password) && !passwordConfirm.isEmpty()) {
 					if (password.equals(passwordConfirm)) {
-						Toast.makeText(MainActivity.this, "ÉèÖÃ³É¹¦£¡",
+						Toast.makeText(MainActivity.this, "è®¾ç½®æˆåŠŸï¼",
 								Toast.LENGTH_SHORT).show();
 						mPref.edit().putString("password", MD5Utils.encode(password)).commit();
 						dialog.dismiss();
 						startActivity(new Intent(MainActivity.this,LostFindActivity.class));
 					} else {
-						Toast.makeText(MainActivity.this, "ÃÜÂë²»Ò»ÖÂ£¡",
+						Toast.makeText(MainActivity.this, "å¯†ç ä¸ä¸€è‡´ï¼",
 								Toast.LENGTH_SHORT).show();
 					}
 				} else {
-					Toast.makeText(MainActivity.this, "ÃÜÂë²»ÄÜÎª¿Õ£¡",
+					Toast.makeText(MainActivity.this, "å¯†ç ä¸èƒ½ä¸ºç©ºï¼",
 							Toast.LENGTH_SHORT).show();
 				}
 
@@ -214,34 +214,34 @@ public class MainActivity extends ActionBarActivity {
 
 		@Override
 		public int getCount() {
-			// ·µ»ØÒªÏÔÊ¾µÄÊıÄ¿
+			// è¿”å›è¦æ˜¾ç¤ºçš„æ•°ç›®
 			return mItems.length;
 		}
 
 		@Override
 		public Object getItem(int arg0) {
-			// ·µ»ØÃ¿Ò»¸ö¶ÔÏó
+			// è¿”å›æ¯ä¸€ä¸ªå¯¹è±¡
 			return mItems[arg0];
 		}
 
 		@Override
 		public long getItemId(int arg0) {
-			// ·µ»Ø¶ÔÏóID
+			// è¿”å›å¯¹è±¡ID
 			return arg0;
 		}
 
 		@Override
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
-			// »ñÈ¡Item²¼¾Ö
+			// è·å–Itemå¸ƒå±€
 			View view = View.inflate(MainActivity.this,
 					R.layout.activity_main_item, null);
-			// »ñÈ¡Í¼Æ¬ºÍÎÄ±¾¶ÔÏó
+			// è·å–å›¾ç‰‡å’Œæ–‡æœ¬å¯¹è±¡
 			ImageView ivItem = (ImageView) view.findViewById(R.id.iv_item);
 			TextView tvItem = (TextView) view.findViewById(R.id.tv_item);
-			// ÉèÖÃÍ¼Æ¬ºÍÎÄ±¾
+			// è®¾ç½®å›¾ç‰‡å’Œæ–‡æœ¬
 			tvItem.setText(mItems[arg0]);
 			ivItem.setImageResource(mPics[arg0]);
-			// ·µ»ØÌîºÃÊı¾İµÄ²¼¾Ö
+			// è¿”å›å¡«å¥½æ•°æ®çš„å¸ƒå±€
 			return view;
 		}
 

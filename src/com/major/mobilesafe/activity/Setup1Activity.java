@@ -8,7 +8,7 @@ import android.view.View;
 import com.major.mobilesafe.R;
 
 /**
- * 第一个设置向导页
+ * 绗竴涓缃悜瀵奸〉
  * 
  * @author Administrator
  * 
@@ -26,8 +26,8 @@ public class Setup1Activity extends BaseSetupActivity {
 		startActivity(new Intent(this, Setup2Activity.class));
 		finish();
 
-		// 两个界面切换动画
-		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// 进入动画
+		// 涓や釜鐣岄潰鍒囨崲鍔ㄧ敾
+		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// 杩涘叆鍔ㄧ敾
 
 	}
 

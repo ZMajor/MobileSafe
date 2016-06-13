@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * µÚ3¸öÉèÖÃÏòµ¼Ò³
+ * ç¬¬3ä¸ªè®¾ç½®å‘å¯¼é¡µ
  * 
  * @author Administrator
  * 
@@ -37,17 +37,17 @@ public class Setup3Activity extends BaseSetupActivity {
 		String phone = etPhone.getText().toString().trim();
 		
 		if (TextUtils.isEmpty(phone)) {
-			//Toast.makeText(this, "°²È«ºÅÂë²»ÄÜÎª¿Õ£¡", Toast.LENGTH_SHORT).show();
-			ToastUtils.showToast(this, "°²È«ºÅÂë²»ÄÜÎª¿Õ");
+			//Toast.makeText(this, "å®‰å…¨å·ç ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_SHORT).show();
+			ToastUtils.showToast(this, "å®‰å…¨å·ç ä¸èƒ½ä¸ºç©º");
 			return;
 		}
 		
-		mPref.edit().putString("safe_phone", phone).commit();// ±£´æ°²È«ºÅÂë
+		mPref.edit().putString("safe_phone", phone).commit();// ä¿å­˜å®‰å…¨å·ç 
 		startActivity(new Intent(this, Setup4Activity.class));
 		finish();
 
-		// Á½¸ö½çÃæÇĞ»»¶¯»­
-		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// ½øÈë¶¯»­
+		// ä¸¤ä¸ªç•Œé¢åˆ‡æ¢åŠ¨ç”»
+		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// è¿›å…¥åŠ¨ç”»
 	}
 
 	@Override
@@ -55,14 +55,14 @@ public class Setup3Activity extends BaseSetupActivity {
 		startActivity(new Intent(this, Setup2Activity.class));
 		finish();
 
-		// Á½¸ö½çÃæÇĞ»»¶¯»­
+		// ä¸¤ä¸ªç•Œé¢åˆ‡æ¢åŠ¨ç”»
 		overridePendingTransition(R.anim.tran_previous_in,
-				R.anim.tran_previous_out);// ÍË³ö¶¯»­
+				R.anim.tran_previous_out);// é€€å‡ºåŠ¨ç”»
 
 	}
 	
 	/**
-	 * Ñ¡ÔñÁªÏµÈË
+	 * é€‰æ‹©è”ç³»äºº
 	 * 
 	 * @param view
 	 */
@@ -74,12 +74,12 @@ public class Setup3Activity extends BaseSetupActivity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// requestCode ·¢³öÌø×ªµÄÇëÇóÖµ  resultCode ·µ»ØÇëÇó½á¹ûÖµ
+		// requestCode å‘å‡ºè·³è½¬çš„è¯·æ±‚å€¼  resultCode è¿”å›è¯·æ±‚ç»“æœå€¼
 		
 		if (resultCode == Activity.RESULT_OK) {
 			String phone = data.getStringExtra("phone");
-			phone = phone.replaceAll(" ", "").replaceAll("-", "");// Ìæ»»-ºÍ¿Õ¸ñ
-			etPhone.setText(phone);// °Ñµç»°ºÅÂëÉèÖÃ¸øÊäÈë¿ò
+			phone = phone.replaceAll(" ", "").replaceAll("-", "");// æ›¿æ¢-å’Œç©ºæ ¼
+			etPhone.setText(phone);// æŠŠç”µè¯å·ç è®¾ç½®ç»™è¾“å…¥æ¡†
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}

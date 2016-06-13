@@ -12,7 +12,7 @@ import com.major.mobilesafe.utils.ToastUtils;
 import com.major.mobilesafe.view.SettingItemView;
 
 /**
- * µÚ¶ş¸öÉèÖÃÏòµ¼Ò³
+ * ç¬¬äºŒä¸ªè®¾ç½®å‘å¯¼é¡µ
  * 
  * @author Administrator
  * 
@@ -42,14 +42,14 @@ public class Setup2Activity extends BaseSetupActivity {
 			public void onClick(View arg0) {
 				if (sivSim.isCheckcd()) {
 					sivSim.setChecked(false);
-					mPref.edit().remove("sim").commit();// É¾³ıÒÑ°ó¶¨µÄsim¿¨
+					mPref.edit().remove("sim").commit();// åˆ é™¤å·²ç»‘å®šçš„simå¡
 				} else {
 					sivSim.setChecked(true);
-					// ±£´æsim¿¨ĞÅÏ¢
+					// ä¿å­˜simå¡ä¿¡æ¯
 					TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-					String simSerialNumber = tm.getSimSerialNumber();// »ñÈ¡sim¿¨ĞòÁĞºÅ
-					System.out.println("sim¿¨ĞòÁĞºÅ:" + simSerialNumber);
-					mPref.edit().putString("sim", simSerialNumber).commit();// ½«sim¿¨ĞòÁĞºÅ±£´æÔÚspÖĞ
+					String simSerialNumber = tm.getSimSerialNumber();// è·å–simå¡åºåˆ—å·
+					System.out.println("simå¡åºåˆ—å·:" + simSerialNumber);
+					mPref.edit().putString("sim", simSerialNumber).commit();// å°†simå¡åºåˆ—å·ä¿å­˜åœ¨spä¸­
 				}
 			}
 		});
@@ -58,18 +58,18 @@ public class Setup2Activity extends BaseSetupActivity {
 
 	@Override
 	public void showNextPage() {
-		// Èç¹ûsim¿¨Ã»ÓĞ°ó¶¨,¾Í²»ÔÊĞí½øÈëÏÂÒ»¸öÒ³Ãæ
+		// å¦‚æœsimå¡æ²¡æœ‰ç»‘å®š,å°±ä¸å…è®¸è¿›å…¥ä¸‹ä¸€ä¸ªé¡µé¢
 		String sim = mPref.getString("sim", null);
 		if (TextUtils.isEmpty(sim)) {
-			ToastUtils.showToast(this, "Çë°ó¶¨sim¿¨£¡");
+			ToastUtils.showToast(this, "è¯·ç»‘å®šsimå¡ï¼");
 			return;
 		}
 		
 		startActivity(new Intent(this, Setup3Activity.class));
 		finish();
 
-		// Á½¸ö½çÃæÇĞ»»µÄ¶¯»­
-		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// ½øÈë¶¯»­ºÍÍË³ö¶¯»­
+		// ä¸¤ä¸ªç•Œé¢åˆ‡æ¢çš„åŠ¨ç”»
+		overridePendingTransition(R.anim.tran_in, R.anim.tran_out);// è¿›å…¥åŠ¨ç”»å’Œé€€å‡ºåŠ¨ç”»
 	}
 
 	@Override
@@ -77,9 +77,9 @@ public class Setup2Activity extends BaseSetupActivity {
 		startActivity(new Intent(this, Setup1Activity.class));
 		finish();
 
-		// Á½¸ö½çÃæÇĞ»»µÄ¶¯»­
+		// ä¸¤ä¸ªç•Œé¢åˆ‡æ¢çš„åŠ¨ç”»
 		overridePendingTransition(R.anim.tran_previous_in,
-				R.anim.tran_previous_out);// ½øÈë¶¯»­ºÍÍË³ö¶¯»­
+				R.anim.tran_previous_out);// è¿›å…¥åŠ¨ç”»å’Œé€€å‡ºåŠ¨ç”»
 	}
 
 }

@@ -20,37 +20,37 @@ public abstract class BaseSetupActivity extends Activity {
 		
 		mPref = getSharedPreferences("config", MODE_PRIVATE);
 		
-		// ÊÖÊÆÊ¶±ğÆ÷
+		// æ‰‹åŠ¿è¯†åˆ«å™¨
 		mDectector = new GestureDetector(this, new SimpleOnGestureListener() {
 
 			/**
-			 * ¼àÌıÊÖÊÆ»¬¶¯ÊÂ¼ş e1±íÊ¾»¬¶¯µÄÆğµã,e2±íÊ¾»¬¶¯ÖÕµã velocityX±íÊ¾Ë®Æ½ËÙ¶È velocityY±íÊ¾´¹Ö±ËÙ¶È
+			 * ç›‘å¬æ‰‹åŠ¿æ»‘åŠ¨äº‹ä»¶ e1è¡¨ç¤ºæ»‘åŠ¨çš„èµ·ç‚¹,e2è¡¨ç¤ºæ»‘åŠ¨ç»ˆç‚¹ velocityXè¡¨ç¤ºæ°´å¹³é€Ÿåº¦ velocityYè¡¨ç¤ºå‚ç›´é€Ÿåº¦
 			 */
 			@Override
 			public boolean onFling(MotionEvent e1, MotionEvent e2,
 					float velocityX, float velocityY) {
 
-				// ÅĞ¶Ï×İÏò»¬¶¯·ù¶ÈÊÇ·ñ¹ı´ó, ¹ı´óµÄ»°²»ÔÊĞíÇĞ»»½çÃæ
+				// åˆ¤æ–­çºµå‘æ»‘åŠ¨å¹…åº¦æ˜¯å¦è¿‡å¤§, è¿‡å¤§çš„è¯ä¸å…è®¸åˆ‡æ¢ç•Œé¢
 				if (Math.abs(e2.getRawY() - e1.getRawY()) > 100) {
-					Toast.makeText(BaseSetupActivity.this, "²»ÄÜÕâÑù»®Å¶!",
+					Toast.makeText(BaseSetupActivity.this, "ä¸èƒ½è¿™æ ·åˆ’å“¦!",
 							Toast.LENGTH_SHORT).show();
 					return true;
 				}
 
-				// ÅĞ¶Ï»¬¶¯ÊÇ·ñ¹ıÂı
+				// åˆ¤æ–­æ»‘åŠ¨æ˜¯å¦è¿‡æ…¢
 				if (Math.abs(velocityX) < 100) {
-					Toast.makeText(BaseSetupActivity.this, "»¬¶¯µÄÌ«ÂıÁË!",
+					Toast.makeText(BaseSetupActivity.this, "æ»‘åŠ¨çš„å¤ªæ…¢äº†!",
 							Toast.LENGTH_SHORT).show();
 					return true;
 				}
 
-				// ÏòÓÒ»®,ÉÏÒ»Ò³
+				// å‘å³åˆ’,ä¸Šä¸€é¡µ
 				if (e2.getRawX() - e1.getRawX() > 200) {
 					showPreviousPage();
 					return true;
 				}
 
-				// Ïò×ó»®, ÏÂÒ»Ò³
+				// å‘å·¦åˆ’, ä¸‹ä¸€é¡µ
 				if (e1.getRawX() - e2.getRawX() > 200) {
 					showNextPage();
 					return true;
@@ -62,28 +62,28 @@ public abstract class BaseSetupActivity extends Activity {
 	}
 	
 	/**
-	 * Õ¹Ê¾ÏÂÒ»Ò³, ×ÓÀà±ØĞëÊµÏÖ
+	 * å±•ç¤ºä¸‹ä¸€é¡µ, å­ç±»å¿…é¡»å®ç°
 	 */
 	public abstract void showNextPage();
 
 	/**
-	 * Õ¹Ê¾ÉÏÒ»Ò³, ×ÓÀà±ØĞëÊµÏÖ
+	 * å±•ç¤ºä¸Šä¸€é¡µ, å­ç±»å¿…é¡»å®ç°
 	 */
 	public abstract void showPreviousPage();
 
-	// µã»÷ÏÂÒ»Ò³°´Å¥
+	// ç‚¹å‡»ä¸‹ä¸€é¡µæŒ‰é’®
 	public void next(View view) {
 		showNextPage();
 	}
 
-	// µã»÷ÉÏÒ»Ò³°´Å¥
+	// ç‚¹å‡»ä¸Šä¸€é¡µæŒ‰é’®
 	public void previous(View view) {
 		showPreviousPage();
 	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		mDectector.onTouchEvent(event);// Î¯ÍĞÊÖÊÆÊ¶±ğÆ÷´¦Àí´¥ÃşÊÂ¼ş
+		mDectector.onTouchEvent(event);// å§”æ‰˜æ‰‹åŠ¿è¯†åˆ«å™¨å¤„ç†è§¦æ‘¸äº‹ä»¶
 		return super.onTouchEvent(event);
 	}
 }

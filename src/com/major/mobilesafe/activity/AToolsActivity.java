@@ -9,7 +9,7 @@ import com.major.mobilesafe.R;
 
 
 /**
- * ¸ß¼¶¹¤¾ß
+ * é«˜çº§å·¥å…·
  * @author Administrator
  *
  */
@@ -22,7 +22,7 @@ public class AToolsActivity extends Activity {
 	}
 	
 	/**
-	 * ¹éÊôµØ²éÑ¯
+	 * å½’å±žåœ°æŸ¥è¯¢
 	 * @param view
 	 */
 	public void numberAddressQuery(View view) {

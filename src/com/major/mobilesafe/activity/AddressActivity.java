@@ -30,7 +30,7 @@ public class AddressActivity extends Activity {
 		
 		etNumber.addTextChangedListener(new TextWatcher() {
 			
-			// ÎÄ×Ö ·¢Éú±ä»¯Ê±µÄ»Øµ÷
+			// æ–‡å­— å‘ç”Ÿå˜åŒ–æ—¶çš„å›è°ƒ
 			@Override
 			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
 					int arg3) {
@@ -38,13 +38,13 @@ public class AddressActivity extends Activity {
 				tvResult.setText(address);
 			}
 			
-			// ÎÄ×Ö±ä»¯½áÊøÖ®ºóµÄ»Øµ÷
+			// æ–‡å­—å˜åŒ–ç»“æŸä¹‹åçš„å›è°ƒ
 			@Override
 			public void afterTextChanged(Editable arg0) {
 				
 			}
 			
-			// ÎÄ×Ö±ä»¯Ç°µÄ»Øµ÷
+			// æ–‡å­—å˜åŒ–å‰çš„å›è°ƒ
 			@Override
 			public void beforeTextChanged(CharSequence arg0, int arg1,
 					int arg2, int arg3) {
@@ -55,7 +55,7 @@ public class AddressActivity extends Activity {
 	}
 	
 	/**
-	 * ²éÑ¯
+	 * æŸ¥è¯¢
 	 * @param view
 	 */
 	public void query(View view) {
@@ -84,15 +84,15 @@ public class AddressActivity extends Activity {
 	}
 	
 	/**
-	 * ÊÖ»úÕğ¶¯, ĞèÒªÈ¨ÏŞ android.permission.VIBRATE
+	 * æ‰‹æœºéœ‡åŠ¨, éœ€è¦æƒé™ android.permission.VIBRATE
 	 */
 	private void vibrate() {
 		Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		// vibrator.vibrate(2000);Õğ¶¯Á½Ãë
-		vibrator.vibrate(new long[] { 1000, 2000, 1000, 3000 }, -1);// ÏÈµÈ´ı1Ãë,ÔÙÕğ¶¯2Ãë,ÔÙµÈ´ı1Ãë,ÔÙÕğ¶¯3Ãë,
-																	// ²Î2µÈÓÚ-1±íÊ¾Ö»Ö´ĞĞÒ»´Î,²»Ñ­»·,
-																	// ²Î2µÈÓÚ0±íÊ¾´ÓÍ·Ñ­»·,
-																	// ²Î2±íÊ¾´ÓµÚ¼¸¸öÎ»ÖÃ¿ªÊ¼Ñ­»·
-		// È¡ÏûÕğ¶¯vibrator.cancel()
+		// vibrator.vibrate(2000);éœ‡åŠ¨ä¸¤ç§’
+		vibrator.vibrate(new long[] { 1000, 2000, 1000, 3000 }, -1);// å…ˆç­‰å¾…1ç§’,å†éœ‡åŠ¨2ç§’,å†ç­‰å¾…1ç§’,å†éœ‡åŠ¨3ç§’,
+																	// å‚2ç­‰äº-1è¡¨ç¤ºåªæ‰§è¡Œä¸€æ¬¡,ä¸å¾ªç¯,
+																	// å‚2ç­‰äº0è¡¨ç¤ºä»å¤´å¾ªç¯,
+																	// å‚2è¡¨ç¤ºä»ç¬¬å‡ ä¸ªä½ç½®å¼€å§‹å¾ªç¯
+		// å–æ¶ˆéœ‡åŠ¨vibrator.cancel()
 	}
 }

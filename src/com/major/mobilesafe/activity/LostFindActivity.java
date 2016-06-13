@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.major.mobilesafe.R;
 
 /**
- * ÊÖ»ú·ÀµÁ
+ * æ‰‹æœºé˜²ç›—
  * @author Administrator
  *
  */
@@ -30,12 +30,12 @@ public class LostFindActivity extends Activity {
 		if (configed) {
 			setContentView(R.layout.activity_lost_find);
 			
-			// ¸ù¾İsp¸üĞÂ°²È«ºÅÂë
+			// æ ¹æ®spæ›´æ–°å®‰å…¨å·ç 
 			tvSafePhone = (TextView) findViewById(R.id.tv_safe_phone);
 			String safePhone = mPrefs.getString("safe_phone", "");
 			tvSafePhone.setText(safePhone);
 			
-			// ¸ù¾İsp¸üĞÂ±£»¤Ëø
+			// æ ¹æ®spæ›´æ–°ä¿æŠ¤é”
 			ivProtect = (ImageView) findViewById(R.id.iv_protect);
 			boolean protect = mPrefs.getBoolean("protect", false);
 			if (protect) {
@@ -51,7 +51,7 @@ public class LostFindActivity extends Activity {
 	}
 	
 	/**
-	 *  ÖØĞÂ½øÈëÉèÖÃÏòµ¼
+	 *  é‡æ–°è¿›å…¥è®¾ç½®å‘å¯¼
 	 * @param view
 	 */
 	public void reEnter(View view) {
